@@ -8,13 +8,13 @@
 </head>
 <body>
 
-    <!-- Barra de navegación -->
+    
     <nav class="barra-navegacion">
         <div class="logo">Mind Balance</div>
         <a href="index.html" class="boton-volver">Volver al Inicio</a>
     </nav>
 
-    <!-- Banner del test -->
+  
     <header class="banner-test">
         <div class="contenido-banner">
             <h1>Evaluación de Ansiedad Académica</h1>
@@ -25,17 +25,28 @@
         </div>
     </header>
 
-    <!-- Contenido del test -->
+    
     <main class="seccion-blanca">
-        <section class="formulario-test">
-            <h2 class="titulo-seccion">Inicio del Test</h2>
-            <p style="text-align:center;">
-                Aquí podrás integrar tu árbol de decisiones o formulario interactivo.
-            </p>
-        </section>
-    </main>
+    <section class="formulario-test">
+        <h2 class="titulo-seccion" id="test-title">Evaluación Mind Balance</h2>
+        
+        <div id="quiz-wrapper" class="contenedor-cuestionario">
+            <div id="question-container">
+                <p id="question-text" style="font-weight: bold; font-size: 1.2em;">Cargando evaluación...</p>
+                <div id="options-container" class="opciones">
+                    </div>
+            </div>
+            
+            <div style="background: #eee; height: 10px; border-radius: 5px; margin-top: 20px;">
+                <div id="progress-bar" style="background: var(--color-principal); width: 0%; height: 100%; border-radius: 5px; transition: 0.3s;"></div>
+            </div>
+        </div>
 
-    <!-- Pie de página -->
+        <div id="resultado-test" class="resultado-oculto"></div>
+    </section>
+</main>
+
+    
     <footer>
         <p>&copy; 2026 Mind Balance - Proyecto de Desarrollo Independiente</p>
     </footer>
