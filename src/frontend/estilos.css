@@ -1,12 +1,4 @@
-/* Importación de fuente */
-body {
-  font-family: 'Montserrat', Arial, sans-serif;
-  margin: 0;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* Paleta de colores */
+/* 1. CONFIGURACIÓN GLOBAL */
 :root {
   --color-principal: #131B4A;
   --color-acento: #547C8B;
@@ -15,7 +7,14 @@ body {
   --gris-fondo: #f9fbfb;
 }
 
-/* Barra de navegación */
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 2. NAVEGACIÓN Y BANNERS */
 .barra-navegacion {
   background-color: var(--blanco-puro);
   border-bottom: 1px solid #eee;
@@ -23,64 +22,58 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 1.5em;
-  color: var(--color-principal);
-}
+.logo { font-weight: bold; font-size: 1.5em; color: var(--color-principal); }
 
-.lema {
-  font-size: 0.9em;
-  color: #666;
-}
-
-/* Banner principal */
-.banner-principal {
-  background: linear-gradient(
-      rgba(19, 27, 74, 0.8),
-      rgba(84, 124, 139, 0.8)
-    ),
-    url("img/image_6.png") center/cover no-repeat;
+.banner-principal, .banner-test {
+  background: linear-gradient(rgba(19, 27, 74, 0.8), rgba(84, 124, 139, 0.8)),
+              url("img/image_6.png") center/cover no-repeat;
   color: white;
   padding: 120px 20px;
   text-align: center;
 }
 
-.contenido-banner h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-.contenido-banner p {
-  font-size: 1.2em;
-}
-
-/* Secciones */
+/* 3. EL ARTÍCULO DE INVESTIGACIÓN (Lo nuevo) */
 .seccion-blanca {
   padding: 60px 10%;
   max-width: 1000px;
   margin: auto;
 }
 
-.titulo-seccion {
-  color: var(--color-principal);
-  text-align: center;
-  margin-bottom: 20px;
+.articulo-investigacion { text-align: left; margin-bottom: 50px; }
+
+.titulo-principal {
+    color: var(--color-principal);
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* Galería de imágenes */
-.galeria-ansiedad {
-  margin-top: 40px;
+.introduccion {
+    font-size: 1.2em;
+    font-style: italic;
+    color: var(--color-acento);
+    margin-bottom: 30px;
+    border-left: 5px solid var(--color-acento);
+    padding-left: 20px;
 }
 
-.titulo-galeria {
-  text-align: center;
-  color: var(--color-principal);
-  margin-bottom: 20px;
+.destacado {
+    background-color: var(--gris-fondo);
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--color-principal);
+    text-align: center;
+    margin: 40px 0;
 }
 
+/* 4. GALERÍA Y CARDS */
 .contenedor-imagenes {
   display: flex;
   justify-content: center;
@@ -97,106 +90,46 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.imagen-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.imagen-card img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Filtro degradado */
 .overlay-imagen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(19, 27, 74, 0.65),
-    rgba(84, 124, 139, 0.65)
-  );
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(19, 27, 74, 0.6), rgba(84, 124, 139, 0.6));
 }
 
-/* Sección CTA */
-.cta-test {
-  background: linear-gradient(
-      rgba(19, 27, 74, 0.95),
-      rgba(84, 124, 139, 0.95)
-    ),
-    url("img/image_5.png") center/cover no-repeat;
+/* 5. REFERENCIAS Y BOTONES */
+.referencias-bibliograficas {
+    margin-top: 60px;
+    padding: 30px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 0.85em;
+}
+
+.boton-accion {
+  background-color: var(--color-principal);
   color: white;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.contenido-cta {
-  max-width: 700px;
-  margin: auto;
-}
-
-.contenido-cta h2 {
-  font-size: 2.2em;
-  margin-bottom: 15px;
-}
-
-.contenido-cta p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-/* Banner del test */
-.banner-test {
-  background: linear-gradient(
-      rgba(19, 27, 74, 0.8),
-      rgba(84, 124, 139, 0.8)
-    ),
-    url("img/image_4.png") center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 120px 20px;
-}
-
-/* Botones */
-.boton-accion,
-.boton-volver {
-  background-color: var(--blanco-puro);
-  color: var(--color-principal);
   padding: 14px 40px;
   text-decoration: none;
   border-radius: 50px;
   font-weight: bold;
   display: inline-block;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.boton-accion:hover,
-.boton-volver:hover {
-  background-color: var(--color-suave);
-  transform: translateY(-2px);
-}
-
-/* Footer */
-footer {
-  padding: 40px;
+.cta-test {
+  background: linear-gradient(rgba(19, 27, 74, 0.95), rgba(84, 124, 139, 0.95)),
+              url("img/image_5.png") center/cover no-repeat;
+  color: white;
   text-align: center;
-  background: #f1f1f1;
-  font-size: 0.9em;
-  color: #666;
+  padding: 80px 20px;
 }
 
-/* Diseño responsivo */
+footer { padding: 40px; text-align: center; background: #f1f1f1; }
+
+/* 6. RESPONSIVO */
 @media (max-width: 768px) {
-  .barra-navegacion {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .contenedor-imagenes {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contenido-banner h1 {
-    font-size: 2em;
-  }
+  .articulo-investigacion { padding: 0 10px; }
+  .titulo-principal { font-size: 1.8em; }
 }
