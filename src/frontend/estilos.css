@@ -1,93 +1,105 @@
-:root {
-  --color-principal: #131B4A; /* Azul oscuro */
-  --color-acento: #547C8B;    /* Azul medio */
-  --blanco: #FFFFFF;
-  --gris-fondo: #f8f9fa;
+/* Títulos de sección */
+.titulo-seccion {
+  color: var(--color-principal);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  color: #333;
-  line-height: 1.6;
+.titulo-galeria {
+  text-align: center;
+  color: var(--color-principal);
+  margin: 40px 0 20px;
 }
 
-/* Navegación */
-.barra-navegacion {
-  background: var(--blanco);
-  padding: 15px 8%;
+/* Galería de imágenes */
+.galeria-ansiedad {
+  margin-top: 40px;
+}
+
+.contenedor-imagenes {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo { font-weight: 700; font-size: 1.5em; color: var(--color-principal); }
-.menu { list-style: none; display: flex; gap: 25px; margin: 0; }
-.menu a { text-decoration: none; color: var(--color-principal); font-weight: 600; }
-
-/* Banner con filtro sobre image_6.png */
-.banner-principal {
-  height: 500px;
-  background: linear-gradient(rgba(19, 27, 74, 0.8), rgba(84, 124, 139, 0.7)), 
-              url('img/image_6.png') center/cover no-repeat;
-  background-blend-mode: multiply; /* Esto crea el efecto de filtro de color */
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  color: white;
-  text-align: center;
+  gap: 25px;
 }
 
-/* Sección Info con filtro sutil (image_4.png) */
-.seccion-info {
-  padding: 80px 10%;
-  background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), 
-              url('img/image_4.png') center/cover no-repeat;
-  background-blend-mode: overlay;
-  text-align: center;
-}
-
-/* Tarjetas */
-.seccion { padding: 60px 10%; text-align: center; }
-.fondo-suave { background-color: var(--gris-fondo); }
-.contenedor-tarjetas { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
-
-.tarjeta {
-  background: white;
-  width: 280px;
-  border-radius: 12px;
+/* Tarjetas de imagen */
+.imagen-card {
+  position: relative;
+  width: 300px;
+  height: 200px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
-.tarjeta img { width: 100%; height: 180px; object-fit: cover; }
-.tarjeta-contenido { padding: 20px; }
 
-/* Sección CTA con filtro azul (image_5.png) */
-.cta {
-  background: linear-gradient(rgba(19, 27, 74, 0.9), rgba(19, 27, 74, 0.9)), 
-              url('img/image_5.png') center/cover no-repeat;
-  background-blend-mode: multiply;
+.imagen-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Filtro degradado */
+.overlay-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(19, 27, 74, 0.65),
+    rgba(84, 124, 139, 0.65)
+  );
+  transition: opacity 0.3s ease;
+}
+
+.imagen-card:hover .overlay-imagen {
+  opacity: 0.85;
+}
+
+/* Sección CTA del test */
+.cta-test {
+  background: linear-gradient(
+      rgba(19, 27, 74, 0.95),
+      rgba(84, 124, 139, 0.95)
+    ),
+    url("img/image_6.png") center/cover no-repeat;
   color: white;
-  padding: 100px 10%;
   text-align: center;
+  padding: 80px 20px;
+  margin-top: 60px;
 }
 
-/* Botones */
+.contenido-cta {
+  max-width: 700px;
+  margin: auto;
+}
+
+.contenido-cta h2 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+}
+
+.contenido-cta p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+/* Botón (manteniendo tu estilo original) */
 .boton-accion {
-  background: var(--color-principal);
-  color: white;
-  padding: 15px 40px;
-  border-radius: 50px;
+  background-color: var(--blanco-puro);
+  color: var(--color-principal);
+  padding: 16px 45px;
   text-decoration: none;
-  font-weight: 700;
+  border-radius: 50px;
+  font-weight: bold;
   display: inline-block;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(19, 27, 74, 0.2);
 }
-.boton-accion:hover { background: var(--color-acento); transform: scale(1.05); }
 
-footer { background: #1a1a1a; color: #aaa; padding: 40px; text-align: center; }
+.boton-accion:hover {
+  background-color: var(--color-suave);
+  transform: translateY(-2px);
+}
