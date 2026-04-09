@@ -29,11 +29,12 @@ body {
 .menu { list-style: none; display: flex; gap: 25px; margin: 0; }
 .menu a { text-decoration: none; color: var(--color-principal); font-weight: 600; }
 
-/* Banner con filtro sobre image_6.jpg */
+/* Banner con filtro sobre imagen_6.png */
 .banner-principal {
   height: 500px;
+  /* Corregido a carpeta 'imagen' y archivo 'imagen_6.png' */
   background: linear-gradient(rgba(19, 27, 74, 0.8), rgba(84, 124, 139, 0.7)), 
-              url('imagenes/image_6.jpg') center/cover no-repeat;
+              url('imagen/imagen_6.png') center/cover no-repeat;
   background-blend-mode: multiply;
   display: flex;
   align-items: center;
@@ -44,11 +45,12 @@ body {
 
 .overlay h1 { font-size: 2.5em; margin: 0; }
 
-/* Sección Info con image_4.jpg (Efecto sutil) */
+/* Sección Info con imagen_4.png (Efecto sutil) */
 .seccion-info {
   padding: 80px 10%;
+  /* Corregido a carpeta 'imagen' y archivo 'imagen_4.png' */
   background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), 
-              url('imagenes/image_4.jpg') center/cover no-repeat;
+              url('imagen/imagen_4.png') center/cover no-repeat;
   background-blend-mode: overlay;
   text-align: center;
 }
@@ -70,13 +72,15 @@ body {
 }
 
 .tarjeta:hover { transform: translateY(-10px); }
+/* Corregido para que las imágenes de las tarjetas también carguen */
 .tarjeta img { width: 100%; height: 180px; object-fit: cover; }
 .tarjeta-contenido { padding: 20px; }
 
-/* Sección CTA con image_5.jpg (Filtro azul fuerte) */
+/* Sección CTA con imagen_5.png (Filtro azul fuerte) */
 .cta {
+  /* Corregido a carpeta 'imagen' y archivo 'imagen_5.png' */
   background: linear-gradient(rgba(19, 27, 74, 0.9), rgba(19, 27, 74, 0.9)), 
-              url('imagenes/image_5.jpg') center/cover no-repeat;
+              url('imagen/imagen_5.png') center/cover no-repeat;
   background-blend-mode: multiply;
   color: white;
   padding: 100px 10%;
