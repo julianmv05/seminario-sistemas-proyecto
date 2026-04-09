@@ -1,193 +1,98 @@
-/* Importación de fuente */
+:root {
+  --color-principal: #131B4A; /* Azul oscuro */
+  --color-acento: #547C8B;    /* Azul medio */
+  --blanco: #FFFFFF;
+  --gris-claro: #f4f7f8;
+}
+
 body {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   color: #333;
-  line-height: 1.6;
 }
 
-/* Paleta de colores */
-:root {
-  --color-principal: #131B4A;
-  --color-acento: #547C8B;
-  --color-suave: #C2CCC9;
-  --blanco-puro: #FFFFFF;
-  --gris-fondo: #f4f7f8;
-}
-
-/* Barra de navegación */
+/* Navegación */
 .barra-navegacion {
-  background-color: var(--blanco-puro);
-  border-bottom: 1px solid #e5e5e5;
+  background: var(--blanco);
   padding: 15px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.6em;
-  color: var(--color-principal);
-}
+.logo { font-weight: 700; font-size: 1.5em; color: var(--color-principal); }
+.menu { list-style: none; display: flex; gap: 20px; }
+.menu a { text-decoration: none; color: var(--color-principal); font-weight: 600; }
 
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-.menu a {
-  text-decoration: none;
-  color: var(--color-principal);
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.menu a:hover {
-  color: var(--color-acento);
-}
-
-/* Banner principal */
+/* Efecto Filtro en Banner */
 .banner-principal {
-  background: linear-gradient(rgba(19, 27, 74, 0.8), rgba(84, 124, 139, 0.8)),
-              url('imagenes/banner.jpg') center/cover no-repeat;
-  height: 450px;
+  height: 500px;
+  /* El secreto: el degradado va primero, luego la imagen */
+  background: linear-gradient(rgba(19, 27, 74, 0.8), rgba(84, 124, 139, 0.6)), 
+              url('imagenes/image_bb1ec0.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   color: white;
-}
-
-.overlay {
-  padding: 20px;
-}
-
-.overlay h1 {
-  font-size: 2.8em;
-  margin-bottom: 10px;
-}
-
-.overlay p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-/* Secciones */
-.seccion {
-  padding: 60px 10%;
   text-align: center;
-  max-width: 1200px;
-  margin: auto;
 }
 
-.seccion h2 {
-  color: var(--color-principal);
-  margin-bottom: 20px;
-}
-
-.fondo-suave {
-  background-color: var(--gris-fondo);
-}
+/* Secciones generales */
+.seccion { padding: 80px 10%; text-align: center; }
+.fondo-suave { background-color: var(--gris-claro); }
 
 /* Tarjetas */
 .contenedor-tarjetas {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 .tarjeta {
-  background: var(--blanco-puro);
-  border-radius: 12px;
-  overflow: hidden;
+  background: white;
   width: 300px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
 }
 
-.tarjeta:hover {
-  transform: translateY(-8px);
+.tarjeta:hover { transform: translateY(-10px); }
+.tarjeta img { width: 100%; height: 200px; object-fit: cover; }
+.tarjeta-contenido { padding: 20px; }
+
+/* Sección CTA con Filtro de Imagen */
+.cta {
+  background: linear-gradient(rgba(19, 27, 74, 0.9), rgba(19, 27, 74, 0.9)), 
+              url('imagenes/image_bb1ea4.jpg') center/cover no-repeat;
+  background-blend-mode: multiply; /* Mezcla el color con la foto */
+  color: white;
+  padding: 100px 10%;
 }
 
-.tarjeta img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.tarjeta h3 {
-  color: var(--color-principal);
-  margin: 15px 0 10px;
-}
-
-.tarjeta p {
-  padding: 0 15px 20px;
-}
+.cta h2 { color: white; }
 
 /* Botones */
 .boton-accion {
-  background-color: var(--color-principal);
+  background: var(--color-principal);
   color: white;
-  padding: 14px 40px;
-  text-decoration: none;
+  padding: 15px 35px;
   border-radius: 50px;
-  font-weight: 600;
+  text-decoration: none;
+  font-weight: 700;
   display: inline-block;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(19, 27, 74, 0.3);
+  margin-top: 20px;
+  transition: 0.3s;
 }
 
 .boton-accion:hover {
-  background-color: var(--color-acento);
-  transform: translateY(-3px);
+  background: var(--color-acento);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Sección CTA */
-.cta {
-  background: linear-gradient(135deg, var(--color-principal), var(--color-acento));
-  color: white;
-}
-
-.cta h2 {
-  color: white;
-}
-
-/* Footer */
-footer {
-  padding: 30px;
-  text-align: center;
-  background: #1a1a1a;
-  color: #ccc;
-  font-size: 0.9em;
-}
-
-/* Diseño responsivo */
-@media (max-width: 768px) {
-  .barra-navegacion {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .menu {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .overlay h1 {
-    font-size: 2em;
-  }
-
-  .banner-principal {
-    height: 350px;
-  }
-}
+footer { background: #111; color: #888; padding: 40px; text-align: center; }
