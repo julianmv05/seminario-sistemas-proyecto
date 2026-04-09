@@ -1,71 +1,101 @@
-const questions = {
-    1: {
-        text: "¿Sientes que tu valor personal depende totalmente de tus notas?",
-        options: [
-            { text: "Nunca", value: 0, next: 2 },
-            { text: "A veces", value: 2, next: 3 }, // Salta a una rama de profundización
-            { text: "Siempre", value: 4, next: 3 }
-        ]
-    },
-    2: {
-        text: "¿Logras desconectarte de los estudios en tu tiempo libre?",
-        options: [
-            { text: "Sí, fácilmente", value: 0, next: 4 },
-            { text: "Me cuesta un poco", value: 1, next: 5 },
-            { text: "Imposible", value: 3, next: 3 }
-        ]
-    },
-    3: { // Rama de profundización en presión académica
-        text: "¿Sientes que tus padres o maestros esperan demasiado de ti?",
-        options: [
-            { text: "No", value: 0, next: 6 },
-            { text: "Sí, es una carga constante", value: 4, next: 7 }
-        ]
+let score = 0;
+let respuestasFiltroB1 = [];
+
+function iniciarTest() {
+    // Verificamos que las preguntas cargaron desde preguntas.js
+    if (typeof bancoPreguntas !== 'undefined') {
+        renderizarPregunta(1);
+    } else {
+        document.getElementById('question-text').innerText = "Error: No se encontró el banco de preguntas.";
     }
-    // Aquí seguiremos extendiendo hasta las 60...
-};
+}
 
-let currentQuestionId = 1;
-let totalScore = 0;
-
-function renderQuestion(id) {
-    const q = questions[id];
-    if (!q) {
-        showFinalResult();
+function renderizarPregunta(id) {
+    const pregunta = bancoPreguntas[id];
+    
+    // Si no hay más preguntas o el ID es nulo, terminamos
+    if (!pregunta || id === null) {
+        finalizarTest();
         return;
     }
 
-    document.getElementById('question-text').innerText = q.text;
     const optionsDiv = document.getElementById('options-container');
+    document.getElementById('question-text').innerText = pregunta.texto;
     optionsDiv.innerHTML = '';
- 
-    q.options.forEach(opt => {
+
+    // Crear botones para cada opción (Nunca, Rara vez, etc.)
+    pregunta.opciones.forEach(opt => {
         const btn = document.createElement('button');
-        btn.innerText = opt.text;
-        btn.className = "boton-accion"; 
+        btn.innerText = opt.desc;
+        btn.className = "boton-accion";
+        btn.style.display = "block";
         btn.style.width = "100%";
         btn.style.marginBottom = "10px";
-        btn.onclick = () => {
-            totalScore += opt.value;
-            renderQuestion(opt.next);
-            updateProgress();
-        };
+        
+        btn.onclick = () => procesarRespuesta(id, opt);
         optionsDiv.appendChild(btn);
     });
+
+    actualizarProgreso(id);
 }
 
-function updateProgress() {
-    // Estimación de progreso basada en profundidad
-    const progress = (currentQuestionId / 60) * 100;
-    document.getElementById('progress-bar').style.width = `${progress}%`;
+function procesarRespuesta(id, opcion) {
+    score += opcion.pts;
+
+    // Guardamos puntos de las primeras 3 para el filtro inteligente
+    if (id <= 3) {
+        respuestasFiltroB1.push(opcion.pts);
+    }
+
+    let siguiente = opcion.sig;
+
+    // Lógica de Salto Inteligente (Pregunta filtro)
+    if (id === 3 && siguiente === "checkFiltro") {
+        const sumaFiltro = respuestasFiltroB1.reduce((a, b) => a + b, 0);
+        // Si el usuario está muy bien físicamente (0-3 pts), saltamos al Bloque 3
+        if (sumaFiltro <= 3) {
+            siguiente = 31; 
+        } else {
+            siguiente = 4; // Continúa normal
+        }
+    }
+
+    renderizarPregunta(siguiente);
 }
 
-function showFinalResult() {
+function actualizarProgreso(id) {
+    const totalPreguntas = 60;
+    const porcentaje = (id / totalPreguntas) * 100;
+    const bar = document.getElementById('progress-bar');
+    if (bar) bar.style.width = porcentaje + "%";
+}
+
+function finalizarTest() {
     document.getElementById('quiz-wrapper').style.display = 'none';
     const resDiv = document.getElementById('resultado-test');
+    resDiv.className = "seccion-blanca"; // Para que mantenga el estilo
     resDiv.style.display = 'block';
-    resDiv.innerHTML = `<h3>Evaluación Finalizada</h3><p>Tu puntaje lógico es: ${totalScore}</p>`;
+
+    let diagnostico = "";
+    if (score <= 60) {
+        diagnostico = "🌱 Nivel Bajo: Tu equilibrio emocional es sólido. ¡Sigue así!";
+    } else if (score <= 150) {
+        diagnostico = "⚠️ Nivel Moderado: Experimentas estrés académico. Considera técnicas de relajación.";
+    } else {
+        diagnostico = "🚨 Nivel Alto: Tu bienestar está muy afectado. Te recomendamos buscar apoyo profesional.";
+    }
+
+    resDiv.innerHTML = `
+        <h2 class='titulo-seccion'>Resultado Final</h2>
+        <div style='background: #f0f4f8; padding: 20px; border-radius: 10px; text-align: center;'>
+            <h3 style='color: var(--color-principal);'>${diagnostico}</h3>
+            <p>Obtuviste un puntaje de: <strong>${score} / 240</strong></p>
+        </div>
+        <br>
+        <button onclick="location.reload()" class="boton-accion">Reiniciar Test</button>
+        <a href="index.html" class="boton-accion" style="background: gray; text-decoration: none; display: inline-block; margin-top: 10px;">Volver al Inicio</a>
+    `;
 }
 
-// Iniciar el test
-renderQuestion(1);
+// Arrancamos el sistema al cargar la página
+window.onload = iniciarTest;
