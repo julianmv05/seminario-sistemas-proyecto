@@ -1,46 +1,81 @@
+/* Paleta de colores aplicada con elegancia */
 :root {
-  --color-fondo-claro: #C2CCC9;   
-  --color-secundario: #99B6B3;     
-  --color-destacado: #749DA1;      
-  --color-primario: #547C8B;       
-  --color-oscuro: #3A5A76;         
-  --color-texto-principal: #243960; 
-  --color-contraste: #131B4A;      
-  --blanco: #FFFFFF;
+  --color-principal: #131B4A;   /* Azul profundo para textos y botones */
+  --color-acento: #547C8B;      /* Azul medio para el banner */
+  --color-suave: #C2CCC9;      /* Gris azulado para fondos ligeros */
+  --blanco-puro: #FFFFFF;
+  --gris-fondo: #f9fbfb;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: var(--color-fondo-claro);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--blanco-puro);
   margin: 0;
-  color: var(--color-texto-principal);
+  color: #333;
+  line-height: 1.6;
 }
 
-.encabezado {
-  background-color: var(--color-contraste);
-  color: var(--blanco);
-  padding: 20px;
+.barra-navegacion {
+  background-color: var(--blanco-puro);
+  border-bottom: 1px solid #eee;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.4em;
+  color: var(--color-principal);
+}
+
+.banner-principal {
+  background: linear-gradient(rgba(19, 27, 74, 0.8), rgba(84, 124, 139, 0.8)), 
+              url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 10%;
   text-align: center;
 }
 
-.banner {
-  background-color: var(--color-primario);
-  color: var(--blanco);
-  padding: 60px 20px;
+.seccion-blanca {
+  padding: 60px 10%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.cuadro-test {
+  background-color: var(--gris-fondo);
+  border: 1px solid #e1e8e8;
+  padding: 40px;
+  border-radius: 12px;
   text-align: center;
+  margin-top: 40px;
 }
 
-.boton-principal {
-  background-color: var(--color-destacado);
-  color: var(--color-contraste);
-  border: 20px;
-  padding: 15px 30px;
-  font-size: 1.2em;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.boton-accion {
+  background-color: var(--color-principal);
+  color: white;
+  padding: 16px 45px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(19, 27, 74, 0.2);
 }
 
-.boton-principal:hover {
-  background-color: var(--color-secundario);
+.boton-accion:hover {
+  background-color: var(--color-acento);
+  transform: translateY(-2px);
+}
+
+footer {
+  padding: 40px;
+  text-align: center;
+  background: #f1f1f1;
+  font-size: 0.9em;
+  color: #666;
 }
