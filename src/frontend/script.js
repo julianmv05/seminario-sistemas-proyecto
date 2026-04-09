@@ -38,7 +38,7 @@ function renderQuestion(id) {
     document.getElementById('question-text').innerText = q.text;
     const optionsDiv = document.getElementById('options-container');
     optionsDiv.innerHTML = '';
-
+ 
     q.options.forEach(opt => {
         const btn = document.createElement('button');
         btn.innerText = opt.text;
