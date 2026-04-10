@@ -109,7 +109,7 @@ function finalizarTest() {
             <h3 style="color: #4e73df;">${d.titulo}</h3>
             <p><strong>Conclusión:</strong> Tu principal reto es esta área (${p[maxKey]}%). <strong>${d.stats}</strong> sufren esto mismo; <strong>no estás solo</strong>.</p>
             <p style="background: #fdf2f2; padding: 15px; border-radius: 10px; border-left: 4px solid #e74c3c;">${d.mensaje}</p>
-            <h4>🚀 Plan de Acción:</h4>
+            <h4> Plan de Acción:</h4>
             <ul>${d.consejos.map(c => `<li>${c}</li>`).join('')}</ul>
         </div>
         <button onclick="location.reload()" class="boton-accion" style="margin-top: 25px;">Reiniciar Test</button>
