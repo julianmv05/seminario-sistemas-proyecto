@@ -13,6 +13,7 @@ function iniciarTest() {
 function renderizarPregunta(id) {
     const pregunta = bancoPreguntas[id];
     if (!pregunta || id === null) {
+        console.log("Finalizando por falta de pregunta o ID nulo");
         finalizarTest();
         return;
     }
