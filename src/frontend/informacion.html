@@ -5,112 +5,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mind Balance | Información y Recursos</title>
     <link rel="stylesheet" href="estilos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --azul-profundo: #2c3e50; --azul-suave: #4A90E2; --gris-texto: #555; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f6; color: var(--azul-profundo); }
-        
-        /* Contenedor Principal */
-        .lectura-natural { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        
-        /* Estilo de Párrafos */
-        .texto-fluido { line-height: 1.8; font-size: 1.1em; color: var(--gris-texto); margin-bottom: 25px; text-align: justify; }
-        
-        /* Encabezados Naturales */
-        .subtitulo-seccion { font-size: 1.8em; color: var(--azul-suave); margin-top: 50px; margin-bottom: 20px; font-weight: 700; border-left: 5px solid var(--azul-suave); padding-left: 15px; }
-        
-        /* Citas y Resaltados */
-        .cita-organismo { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-right: 4px solid var(--azul-suave); margin: 40px 0; font-style: italic; position: relative; }
-        
-        .enfasis { color: var(--azul-suave); font-weight: 600; }
+        :root {
+            --azul-oscuro: #1e3a8a; /* Blue 900 */
+            --azul-medio: #3b82f6;  /* Blue 500 */
+            --azul-claro: #eff6ff;  /* Blue 50 */
+            --gris-texto: #374151;  /* Gray 700 */
+            --blanco: #ffffff;
+        }
 
-        /* Lista de Dimensiones */
-        .lista-dimensiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
-        .item-dimension { background: #eef2f7; padding: 20px; border-radius: 12px; border-top: 3px solid var(--azul-suave); }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            color: var(--gris-texto);
+            line-height: 1.8;
+            margin: 0;
+            font-size: 18px; /* Tamaño de letra mejorado */
+        }
 
-        /* Bibliografía */
-        .bibliografia { background: #fff; padding: 30px; border-radius: 10px; font-size: 0.9em; margin-top: 60px; border: 1px solid #ddd; }
-        .bibliografia h4 { margin-top: 0; color: var(--azul-profundo); }
-        .bibliografia ul { list-style: none; padding: 0; }
-        .bibliografia li { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        /* Navegación */
+        .barra-navegacion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: var(--azul-oscuro);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo { font-weight: 700; color: white; font-size: 1.2rem; }
+        .menu-navegacion a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+        .menu-navegacion a:hover { opacity: 0.8; }
+        .btn-test {
+            background: var(--blanco);
+            color: var(--azul-oscuro) !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700 !important;
+        }
+
+        /* Contenido */
+        .contenedor-lectura {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
+
+        h1 {
+            color: var(--azul-oscuro);
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--azul-medio);
+            font-size: 1.8rem;
+            margin-top: 50px;
+            border-bottom: 2px solid var(--azul-claro);
+            padding-bottom: 10px;
+        }
+
+        p { margin-bottom: 28px; text-align: left; }
+
+        /* Bloques de Énfasis */
+        .bloque-oms {
+            background-color: var(--azul-claro);
+            border-left: 6px solid var(--azul-medio);
+            padding: 30px;
+            border-radius: 0 15px 15px 0;
+            margin: 40px 0;
+            font-style: italic;
+            color: var(--azul-oscuro);
+        }
+
+        .enfasis-profesional {
+            color: var(--azul-medio);
+            font-weight: 600;
+        }
+
+        /* Tarjetas de Dimensiones */
+        .grid-dimensiones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card strong { color: var(--azul-medio); display: block; margin-bottom: 10px; font-size: 1.2rem; }
+
+        /* Referencias */
+        .seccion-referencias {
+            margin-top: 80px;
+            padding: 40px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .seccion-referencias h4 { color: var(--azul-oscuro); margin-top: 0; }
+        .seccion-referencias ul { list-style: none; padding: 0; }
+        .seccion-referencias li { margin-bottom: 12px; color: #64748b; }
+
+        footer { text-align: center; padding: 60px 0; color: #94a3b8; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <nav class="barra-navegacion" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #4A90E2;">
-        <div class="nav-izquierdo">
-            <div class="logo" style="font-weight: bold; color: white;">Mind Balance</div>
-        </div>
-        <div class="menu-navegacion" style="display: flex; gap: 20px; align-items: center;">
-            <a href="index.html" style="color: white; text-decoration: none; font-weight: 600;">Inicio</a>
-            <a href="informacion.html" style="color: white; text-decoration: none; font-weight: 600; border-bottom: 2px solid #fff;">¿Qué es la Ansiedad?</a>
-            <a href="test.html" style="background: white; color: #4A90E2; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold;">Hacer Test</a>
+    <nav class="barra-navegacion">
+        <div class="logo">Mind Balance</div>
+        <div class="menu-navegacion">
+            <a href="index.html">Inicio</a>
+            <a href="informacion.html" style="border-bottom: 2px solid white;">Información</a>
+            <a href="test.html" class="btn-test">Hacer Test</a>
         </div>
     </nav>
 
-    <main class="lectura-natural">
+    <main class="contenedor-lectura">
         
-        <header style="text-align: center; margin-bottom: 60px;">
-            <h1 style="font-size: 2.5em; margin-bottom: 10px;">Comprendiendo el Entorno Estudiantil</h1>
-            <p style="color: #888;">Un análisis profundo sobre las causas y efectos de la ansiedad académica.</p>
-        </header>
+        <h1>La Ansiedad en el Entorno Académico</h1>
 
-        <p class="texto-fluido">
-            La ansiedad en estudiantes es uno de los problemas de salud mental más frecuentes en la actualidad y representa una preocupación significativa para instituciones educativas y organismos internacionales de salud. Diversas investigaciones han demostrado que la <span class="enfasis">presión académica, las expectativas familiares y el temor a no alcanzar metas personales</span> son factores determinantes en el desarrollo de síntomas ansiosos durante la adolescencia y la juventud.
+        <p>
+            La ansiedad en estudiantes es uno de los problemas de salud mental más frecuentes en la actualidad y representa una preocupación significativa para instituciones educativas y organismos internacionales de salud. Diversas investigaciones han demostrado que la <span class="enfasis-profesional">presión académica, las expectativas familiares y el temor a no alcanzar metas personales</span> son factores determinantes en el desarrollo de síntomas ansiosos durante la juventud.
         </p>
 
-        <div class="cita-organismo">
-            De acuerdo con la <strong>Organización Mundial de la Salud (OMS)</strong>, los trastornos de ansiedad se encuentran entre las afecciones mentales más comunes en jóvenes. La OMS señala que las demandas académicas intensas, junto con la incertidumbre sobre el futuro profesional, actúan como desencadenantes del estrés psicológico.
+        <div class="bloque-oms">
+            "De acuerdo con la <strong>Organización Mundial de la Salud (OMS)</strong>, los trastornos de ansiedad se encuentran entre las afecciones mentales más comunes en jóvenes, afectando su bienestar emocional y su capacidad para desenvolverse en la vida cotidiana."
         </div>
 
-        <h2 class="subtitulo-seccion">El impacto de la exigencia</h2>
-        <p class="texto-fluido">
-            En el contexto educativo, la presión por obtener altas calificaciones suele generar una percepción constante de evaluación. Un informe del <strong>National Institute of Mental Health (NIMH)</strong> indica que los estudiantes con alta exigencia presentan mayor probabilidad de desarrollar síntomas como preocupación excesiva e insomnio, afectando directamente la percepción de autoeficacia.
+        <p>
+            En el contexto educativo, la presión por obtener altas calificaciones suele generar una percepción constante de evaluación y competencia. Un informe del <span class="enfasis-profesional">National Institute of Mental Health (NIMH)</span> indica que los estudiantes que experimentan altos niveles de exigencia presentan mayor probabilidad de desarrollar síntomas como preocupación excesiva e insomnio.
         </p>
 
-        <p class="texto-fluido">
-            La <strong>American Psychological Association (APA)</strong> destaca el papel de las expectativas familiares. Cuando el valor personal se liga exclusivamente a los logros, surge el <span class="enfasis">“perfeccionismo desadaptativo”</span>, elevando la vulnerabilidad a trastornos emocionales. Esto se suma a la incertidumbre laboral, un vínculo documentado por el <em>Journal of Affective Disorders</em> como un factor crítico en universitarios.
+        <h2>El Rol de las Expectativas</h2>
+        <p>
+            La <span class="enfasis-profesional">American Psychological Association (APA)</span> ha destacado que cuando los estudiantes perciben que su valor personal depende de sus logros, pueden desarrollar el “perfeccionismo desadaptativo”. Este fenómeno se asocia con niveles elevados de estrés y vulnerabilidad emocional. Además, estudios en el <em>Journal of Affective Disorders</em> vinculan la preocupación persistente por el futuro laboral con el aumento de síntomas ansiosos.
         </p>
 
-        <h2 class="subtitulo-seccion">Las tres dimensiones del síntoma</h2>
-        <p class="texto-fluido">Desde una perspectiva clínica, la ansiedad se manifiesta de forma interrelacionada:</p>
-        
-        <div class="lista-dimensiones">
-            <div class="item-dimension">
-                <strong>Plano Cognitivo:</strong> Pensamientos catastróficos, dudas constantes y autoexigencia extrema.
+        <h2>Dimensiones del Síntoma</h2>
+        <p>Desde una perspectiva clínica, la ansiedad se manifiesta en tres planos interrelacionados:</p>
+
+        <div class="grid-dimensiones">
+            <div class="card">
+                <strong>Plano Cognitivo</strong>
+                Pensamientos de tipo catastrófico, dudas constantes sobre las capacidades y autoexigencia excesiva.
             </div>
-            <div class="item-dimension">
-                <strong>Plano Físico:</strong> Alteraciones del sueño, fatiga crónica, tensión muscular y problemas gastrointestinales.
+            <div class="card">
+                <strong>Plano Físico</strong>
+                Alteraciones del sueño, fatiga crónica, tensión muscular, dolores de cabeza y problemas gastrointestinales.
             </div>
-            <div class="item-dimension">
-                <strong>Plano Funcional:</strong> Procrastinación, evitación de tareas, aislamiento social y descuido personal.
+            <div class="card">
+                <strong>Plano Funcional</strong>
+                Procrastinación, evitación de tareas, aislamiento social y descuido del autocuidado personal.
             </div>
         </div>
 
-        <h2 class="subtitulo-seccion">Hacia un manejo efectivo</h2>
-        <p class="texto-fluido">
-            La evidencia en <em>Educational Psychology Review</em> sugiere que, aunque niveles moderados de ansiedad pueden motivar, el exceso afecta la memoria y atención. Ante esto, los profesionales recomiendan pilares fundamentales: <span class="enfasis">hábitos de sueño, actividad física y gestión del tiempo</span>.
+        <h2>Prevención y Manejo</h2>
+        <p>
+            La evidencia científica en <em>Educational Psychology Review</em> señala que niveles moderados de ansiedad pueden motivar; sin embargo, cuando es intensa, afecta la memoria y la toma de decisiones. Profesionales recomiendan pilares fundamentales: <span class="enfasis-profesional">hábitos de sueño saludables, actividad física regular y gestión del tiempo</span>.
         </p>
         
-        <p class="texto-fluido">
-            La <strong>APA</strong> y el <strong>NIMH</strong> coinciden en la eficacia de las redes de apoyo social y el acceso a servicios de orientación dentro de las instituciones para fomentar el bienestar integral. La detección temprana es, en última instancia, el elemento clave para el desarrollo académico y personal.
+        <p>
+            Intervenciones basadas en la terapia cognitivo-conductual ayudan a reestructurar pensamientos irracionales. La detección temprana y el acceso a redes de apoyo social son claves para favorecer el desarrollo académico y personal de los jóvenes.
         </p>
 
-        <section class="bibliografia">
-            <h4>Referencias Bibliográficas</h4>
+        <section class="seccion-referencias">
+            <h4>Fuentes y Bibliografía Certificada</h4>
             <ul>
-                <li>World Health Organization (WHO). (2023). Mental health of adolescents.</li>
-                <li>National Institute of Mental Health (NIMH). (2024). Anxiety Disorders.</li>
-                <li>American Psychological Association (APA). (2022). Stress in America Survey.</li>
-                <li>Beiter, R., et al. (2015). Journal of Affective Disorders, 173, 90–96.</li>
-                <li>Putwain, D. (2007). Educational Psychology Review.</li>
+                <li>• World Health Organization (WHO). (2023). Mental health of adolescents.</li>
+                <li>• National Institute of Mental Health (NIMH). (2024). Anxiety Disorders.</li>
+                <li>• American Psychological Association (APA). (2022). Stress in America Survey.</li>
+                <li>• Diagnostic and Statistical Manual of Mental Disorders (DSM-5-TR).</li>
+                <li>• Beiter, R., et al. (2015). Journal of Affective Disorders, 173, 90–96.</li>
+                <li>• Putwain, D. (2007). Educational Psychology Review.</li>
             </ul>
         </section>
 
     </main>
 
-    <footer style="text-align: center; padding: 40px; color: #888; font-size: 0.9em;">
-        &copy; 2026 Mind Balance - Proyecto de Desarrollo Independiente
+    <footer>
+        &copy; 2026 Mind Balance - Sistema Experto de Apoyo Estudiantil
     </footer>
 
 </body>
