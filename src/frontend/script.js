@@ -1,7 +1,7 @@
 function finalizarTest() {
     document.getElementById('quiz-wrapper').style.display = 'none';
     const resDiv = document.getElementById('resultado-test');
-    resDiv.style.display = 'block';
+    resDiv.style.display = 'block'; 
 
     const p = {
         fisico: Math.round((scores.fisico / 60) * 100),
