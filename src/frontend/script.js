@@ -36,21 +36,25 @@ function renderizarPregunta(id) {
 }
 
 function procesarRespuesta(id, opcion) {
-    // Clasificación por bloques
     if (id >= 1 && id <= 15) scores.fisico += opcion.pts;
     else if (id >= 16 && id <= 30) scores.social += opcion.pts;
     else if (id >= 31 && id <= 45) scores.metas += opcion.pts;
     else if (id >= 46 && id <= 60) scores.academico += opcion.pts;
 
     totalScore += opcion.pts;
-    if (id <= 3) respuestasFiltroB1.push(opcion.pts);
 
     let siguiente = opcion.sig;
+
     if (id === 3 && siguiente === "checkFiltro") {
         const suma = respuestasFiltroB1.reduce((a, b) => a + b, 0);
         siguiente = (suma <= 3) ? 31 : 4;
     }
-    renderizarPregunta(siguiente);
+
+    if (id === 60 || siguiente === null || siguiente === undefined) {
+        finalizarTest();
+    } else {
+        renderizarPregunta(siguiente);
+    }
 }
 
 function actualizarProgreso(id) {
