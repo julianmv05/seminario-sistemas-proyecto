@@ -3,60 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind Balance | Sobre la Ansiedad Académica</title>
+    <title>Mind Balance | Información y Recursos</title>
     <link rel="stylesheet" href="estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .contenido-info { max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-        .tarjeta-info { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .resaltado { color: var(--color-principal, #4A90E2); font-weight: bold; }
+        :root { --azul-profundo: #2c3e50; --azul-suave: #4A90E2; --gris-texto: #555; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f6; color: var(--azul-profundo); }
+        
+        /* Contenedor Principal */
+        .lectura-natural { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        
+        /* Estilo de Párrafos */
+        .texto-fluido { line-height: 1.8; font-size: 1.1em; color: var(--gris-texto); margin-bottom: 25px; text-align: justify; }
+        
+        /* Encabezados Naturales */
+        .subtitulo-seccion { font-size: 1.8em; color: var(--azul-suave); margin-top: 50px; margin-bottom: 20px; font-weight: 700; border-left: 5px solid var(--azul-suave); padding-left: 15px; }
+        
+        /* Citas y Resaltados */
+        .cita-organismo { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-right: 4px solid var(--azul-suave); margin: 40px 0; font-style: italic; position: relative; }
+        
+        .enfasis { color: var(--azul-suave); font-weight: 600; }
+
+        /* Lista de Dimensiones */
+        .lista-dimensiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .item-dimension { background: #eef2f7; padding: 20px; border-radius: 12px; border-top: 3px solid var(--azul-suave); }
+
+        /* Bibliografía */
+        .bibliografia { background: #fff; padding: 30px; border-radius: 10px; font-size: 0.9em; margin-top: 60px; border: 1px solid #ddd; }
+        .bibliografia h4 { margin-top: 0; color: var(--azul-profundo); }
+        .bibliografia ul { list-style: none; padding: 0; }
+        .bibliografia li { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
     </style>
 </head>
 <body>
 
-    <nav class="barra-navegacion" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: var(--color-principal, #4A90E2);">
+    <nav class="barra-navegacion" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #4A90E2;">
         <div class="nav-izquierdo">
             <div class="logo" style="font-weight: bold; color: white;">Mind Balance</div>
-            <span class="lema" style="margin-left: 15px; font-size: 0.8em; color: white; opacity: 0.8; font-style: italic;">Independencia · Lógica · Bienestar</span>
         </div>
-        
         <div class="menu-navegacion" style="display: flex; gap: 20px; align-items: center;">
-            <a href="index.html" style="color: white; text-decoration: none; font-weight: 600; font-size: 0.9em;">Inicio</a>
-            <a href="informacion.html" style="color: white; text-decoration: none; font-weight: 600; font-size: 0.9em; border-bottom: 2px solid #fff;">¿Qué es la Ansiedad?</a>
-            <a href="test.html" style="background: white; color: #4A90E2; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.85em;">Hacer Test</a>
+            <a href="index.html" style="color: white; text-decoration: none; font-weight: 600;">Inicio</a>
+            <a href="informacion.html" style="color: white; text-decoration: none; font-weight: 600; border-bottom: 2px solid #fff;">¿Qué es la Ansiedad?</a>
+            <a href="test.html" style="background: white; color: #4A90E2; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold;">Hacer Test</a>
         </div>
     </nav>
 
-    <header class="banner-test" style="height: auto; padding: 50px 20px; text-align: center; background-color: #f8f9fa;">
-        <h1>Comprendiendo la Ansiedad Académica</h1>
-        <p>Una guia y un apoyo ¿Ocupas saber mas?.</p>
-    </header>
+    <main class="lectura-natural">
+        
+        <header style="text-align: center; margin-bottom: 60px;">
+            <h1 style="font-size: 2.5em; margin-bottom: 10px;">Comprendiendo el Entorno Estudiantil</h1>
+            <p style="color: #888;">Un análisis profundo sobre las causas y efectos de la ansiedad académica.</p>
+        </header>
 
-    <main class="contenido-info">
-        <section class="tarjeta-info">
-            <h2>¿Qué es la Ansiedad Académica?</h2>
-            <p>No es solo "estar nervioso" por un examen. Es una respuesta emocional de <span class="resaltado">aprensión, miedo o preocupación</span> provocada por situaciones escolares que se perciben como amenazantes para la autoestima o el futuro profesional.</p>
-        </section>
+        <p class="texto-fluido">
+            La ansiedad en estudiantes es uno de los problemas de salud mental más frecuentes en la actualidad y representa una preocupación significativa para instituciones educativas y organismos internacionales de salud. Diversas investigaciones han demostrado que la <span class="enfasis">presión académica, las expectativas familiares y el temor a no alcanzar metas personales</span> son factores determinantes en el desarrollo de síntomas ansiosos durante la adolescencia y la juventud.
+        </p>
 
-        <section class="tarjeta-info">
-            <h2>¿Cómo la identifica nuestro sistema?</h2>
-            <p>Nuestro algoritmo analiza 4 dimensiones clave basadas en modelos psicológicos de estrés:</p>
+        <div class="cita-organismo">
+            De acuerdo con la <strong>Organización Mundial de la Salud (OMS)</strong>, los trastornos de ansiedad se encuentran entre las afecciones mentales más comunes en jóvenes. La OMS señala que las demandas académicas intensas, junto con la incertidumbre sobre el futuro profesional, actúan como desencadenantes del estrés psicológico.
+        </div>
+
+        <h2 class="subtitulo-seccion">El impacto de la exigencia</h2>
+        <p class="texto-fluido">
+            En el contexto educativo, la presión por obtener altas calificaciones suele generar una percepción constante de evaluación. Un informe del <strong>National Institute of Mental Health (NIMH)</strong> indica que los estudiantes con alta exigencia presentan mayor probabilidad de desarrollar síntomas como preocupación excesiva e insomnio, afectando directamente la percepción de autoeficacia.
+        </p>
+
+        <p class="texto-fluido">
+            La <strong>American Psychological Association (APA)</strong> destaca el papel de las expectativas familiares. Cuando el valor personal se liga exclusivamente a los logros, surge el <span class="enfasis">“perfeccionismo desadaptativo”</span>, elevando la vulnerabilidad a trastornos emocionales. Esto se suma a la incertidumbre laboral, un vínculo documentado por el <em>Journal of Affective Disorders</em> como un factor crítico en universitarios.
+        </p>
+
+        <h2 class="subtitulo-seccion">Las tres dimensiones del síntoma</h2>
+        <p class="texto-fluido">Desde una perspectiva clínica, la ansiedad se manifiesta de forma interrelacionada:</p>
+        
+        <div class="lista-dimensiones">
+            <div class="item-dimension">
+                <strong>Plano Cognitivo:</strong> Pensamientos catastróficos, dudas constantes y autoexigencia extrema.
+            </div>
+            <div class="item-dimension">
+                <strong>Plano Físico:</strong> Alteraciones del sueño, fatiga crónica, tensión muscular y problemas gastrointestinales.
+            </div>
+            <div class="item-dimension">
+                <strong>Plano Funcional:</strong> Procrastinación, evitación de tareas, aislamiento social y descuido personal.
+            </div>
+        </div>
+
+        <h2 class="subtitulo-seccion">Hacia un manejo efectivo</h2>
+        <p class="texto-fluido">
+            La evidencia en <em>Educational Psychology Review</em> sugiere que, aunque niveles moderados de ansiedad pueden motivar, el exceso afecta la memoria y atención. Ante esto, los profesionales recomiendan pilares fundamentales: <span class="enfasis">hábitos de sueño, actividad física y gestión del tiempo</span>.
+        </p>
+        
+        <p class="texto-fluido">
+            La <strong>APA</strong> y el <strong>NIMH</strong> coinciden en la eficacia de las redes de apoyo social y el acceso a servicios de orientación dentro de las instituciones para fomentar el bienestar integral. La detección temprana es, en última instancia, el elemento clave para el desarrollo académico y personal.
+        </p>
+
+        <section class="bibliografia">
+            <h4>Referencias Bibliográficas</h4>
             <ul>
-                <li><strong>Física:</strong> Somatización (insomnio, dolores de cabeza).</li>
-                <li><strong>Social:</strong> Presión de grupo y miedo al juicio ajeno.</li>
-                <li><strong>Metas:</strong> Perfeccionismo y miedo al fracaso.</li>
-                <li><strong>Académica:</strong> Bloqueos específicos ante tareas o exámenes.</li>
+                <li>World Health Organization (WHO). (2023). Mental health of adolescents.</li>
+                <li>National Institute of Mental Health (NIMH). (2024). Anxiety Disorders.</li>
+                <li>American Psychological Association (APA). (2022). Stress in America Survey.</li>
+                <li>Beiter, R., et al. (2015). Journal of Affective Disorders, 173, 90–96.</li>
+                <li>Putwain, D. (2007). Educational Psychology Review.</li>
             </ul>
         </section>
 
-        <section class="tarjeta-info" style="border-left: 5px solid #f39c12;">
-            <h2>Dato Clave</h2>
-            <p>Según estudios en ingeniería y sistemas, el <strong>70% de los estudiantes</strong> experimenta parálisis por análisis en algún momento de su carrera. Identificarlo a tiempo con herramientas como <strong>Mind Balance</strong> es el primer paso para la mejora.</p>
-        </section>
     </main>
 
-    <footer style="text-align: center; padding: 20px;">
-        <p>&copy; 2026 Mind Balance - Información de Apoyo Estudiantil</p>
+    <footer style="text-align: center; padding: 40px; color: #888; font-size: 0.9em;">
+        &copy; 2026 Mind Balance - Proyecto de Desarrollo Independiente
     </footer>
 
 </body>
