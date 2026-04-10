@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mind Balance | Sobre la Ansiedad Académica</title>
     <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         .contenido-info { max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
         .tarjeta-info { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
@@ -13,15 +14,20 @@
 </head>
 <body>
 
-    <nav class="barra-navegacion">
-        <div class="logo">Mind Balance</div>
-        <div>
-            <a href="index.html" class="boton-volver">Inicio</a>
-            <a href="test.html" class="boton-accion">Hacer Test</a>
+    <nav class="barra-navegacion" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: var(--color-principal, #4A90E2);">
+        <div class="nav-izquierdo">
+            <div class="logo" style="font-weight: bold; color: white;">Mind Balance</div>
+            <span class="lema" style="margin-left: 15px; font-size: 0.8em; color: white; opacity: 0.8; font-style: italic;">Independencia · Lógica · Bienestar</span>
+        </div>
+        
+        <div class="menu-navegacion" style="display: flex; gap: 20px; align-items: center;">
+            <a href="index.html" style="color: white; text-decoration: none; font-weight: 600; font-size: 0.9em;">Inicio</a>
+            <a href="informacion.html" style="color: white; text-decoration: none; font-weight: 600; font-size: 0.9em; border-bottom: 2px solid #fff;">¿Qué es la Ansiedad?</a>
+            <a href="test.html" style="background: white; color: #4A90E2; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.85em;">Hacer Test</a>
         </div>
     </nav>
 
-    <header class="banner-test" style="height: auto; padding: 50px 20px;">
+    <header class="banner-test" style="height: auto; padding: 50px 20px; text-align: center; background-color: #f8f9fa;">
         <h1>Comprendiendo la Ansiedad Académica</h1>
         <p>Más allá de los libros: una guía para estudiantes de sistemas.</p>
     </header>
