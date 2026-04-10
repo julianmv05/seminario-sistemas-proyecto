@@ -46,12 +46,8 @@ function procesarRespuesta(id, opcion) {
 
     let siguiente = opcion.sig;
 
-    if (id === 3 && siguiente === "checkFiltro") {
-        const suma = respuestasFiltroB1.reduce((a, b) => a + b, 0);
-        siguiente = (suma <= 3) ? 31 : 4;
-    }
-
-    if (id === 60 || siguiente === null || siguiente === undefined) {
+    if (id >= 60 || siguiente === null || siguiente === undefined) {
+        console.log("Test finalizado con éxito.");
         finalizarTest();
     } else {
         renderizarPregunta(siguiente);
