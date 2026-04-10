@@ -4,7 +4,7 @@
  */
 
 let scores = { fisico: 0, social: 0, metas: 0, academico: 0 };
-let totalScore = 0;
+let totalScore = 0; 
 
 // 1. INICIO DEL SISTEMA
 function iniciarTest() {
