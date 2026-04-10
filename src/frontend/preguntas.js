@@ -179,8 +179,6 @@ const bancoPreguntas = {
     ]},
     60: { texto: "¿Consideras que el estrés académico afecta significativamente tu vida diaria?", bloque: 1, filtro: true, opciones: [
         { desc: "Nunca", pts: 0, sig: null }, { desc: "Rara vez", pts: 1, sig: null }, { desc: "A veces", pts: 2, sig: null }, { desc: "Frecuentemente", pts: 3, sig: null }, { desc: "Siempre", pts: 4, sig: null }
-    ]},
-    
-    
-    
+        ]
+    } 
 };
