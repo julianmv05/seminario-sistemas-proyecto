@@ -75,74 +75,98 @@ function finalizarTest() {
     const resDiv = document.getElementById('resultado-test');
     resDiv.style.display = 'block';
 
-    // 1. Calcular porcentajes por bloque (Máximo 60 puntos por bloque)
-    const porcFisico = Math.round((scores.fisico / 60) * 100);
-    const porcSocial = Math.round((scores.social / 60) * 100);
-    const porcMetas = Math.round((scores.metas / 60) * 100);
-    const porcAcademico = Math.round((scores.academico / 60) * 100);
+    // 1. Cálculo de porcentajes
+    const p = {
+        fisico: Math.round((scores.fisico / 60) * 100),
+        social: Math.round((scores.social / 60) * 100),
+        metas: Math.round((scores.metas / 60) * 100),
+        academico: Math.round((scores.academico / 60) * 100)
+    };
 
-    // 2. Identificar el problema principal
-    const dimensiones = [
-        { nombre: 'Ansiedad Física', valor: porcFisico, causa: "reacciones fisiológicas al estrés" },
-        { nombre: 'Presión Social', valor: porcSocial, causa: "expectativas externas y comparación" },
-        { nombre: 'Metas Personales', valor: porcMetas, causa: "autoexigencia y perfeccionismo" },
-        { nombre: 'Bloqueo Académico', valor: porcAcademico, causa: "dificultad en el desempeño directo" }
-    ];
-    const principal = dimensiones.reduce((prev, current) => (prev.valor > current.valor) ? prev : current);
+    // 2. Encontrar el bloque predominante
+    const maxKey = Object.keys(p).reduce((a, b) => p[a] > p[b] ? a : b);
+    
+    // 3. Base de Datos de Diagnósticos Inteligentes
+    const diagnosticos = {
+        fisico: {
+            titulo: "Ansiedad con Manifestación Física",
+            stats: "el 65% de los universitarios",
+            mensaje: "Tu cuerpo está procesando el estrés antes que tu mente. Es común sentir que el cansancio no se va, pero no eres el único.",
+            consejos: ["Prueba la relajación muscular progresiva.", "Establece una rutina de sueño sin pantallas.", "Realiza pausas activas cada 50 minutos."]
+        },
+        social: {
+            titulo: "Presión por Entorno y Expectativas",
+            stats: "8 de cada 10 estudiantes",
+            mensaje: "Sientes que el peso de las expectativas ajenas es tuyo. Es normal compararse, pero tu valor no es una competencia.",
+            consejos: ["Practica decir 'no' sin sentir culpa.", "Limita el tiempo en redes sociales de comparación.", "Habla con un mentor sobre tus miedos."]
+        },
+        metas: {
+            titulo: "Autoexigencia y Perfeccionismo",
+            stats: "más de la mitad de los alumnos de alto rendimiento",
+            mensaje: "Tu mayor crítico eres tú mismo. El miedo al error te está frenando más que la dificultad de las materias.",
+            consejos: ["Acepta que un 80 o 90 también es éxito.", "Define metas basadas en el esfuerzo, no solo en la nota.", "Permítete fallar en algo pequeño para perderle el miedo."]
+        },
+        academico: {
+            titulo: "Bloqueo en el Desempeño",
+            stats: "el 75% de los jóvenes en periodos de exámenes",
+            mensaje: "La carga te ha sobrepasado y tu cerebro ha activado un modo de 'parálisis'. Es una respuesta de defensa muy frecuente.",
+            consejos: ["Usa la técnica de los 5 minutos (solo empieza la tarea 5 min).", "Limpia tu espacio de trabajo de distracciones.", "Divide el proyecto grande en micro-tareas."]
+        }
+    };
 
-    // 3. Renderizar la estructura
+    const d = diagnosticos[maxKey];
+
+    // 4. Renderizado Final
     resDiv.innerHTML = `
-        <h2 class="titulo-seccion">Análisis Profesional de Resultados</h2>
-        <p style="text-align: center; color: #666;">Basado en tus respuestas, este es tu perfil de bienestar actual:</p>
+        <h2 class="titulo-seccion">Resultados de tu Evaluación</h2>
         
-        <div style="width: 100%; max-width: 500px; margin: auto;">
+        <div style="max-width: 500px; margin: auto;">
             <canvas id="graficoResultados"></canvas>
         </div>
 
-        <div class="contenedor-diagnostico" style="margin-top: 30px; padding: 20px; background: white; border-radius: 15px; border-left: 5px solid var(--color-principal); shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h3>Conclusión del Análisis:</h3>
-            <p>Tu principal foco de atención es <strong>${principal.nombre}</strong> con un <strong>${principal.valor}%</strong> de intensidad.</p>
+        <div class="diagnostico-final" style="text-align: left; padding: 25px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: 20px;">
+            <h3 style="color: var(--color-principal);">${d.titulo}</h3>
+            <p style="font-size: 1.1em; line-height: 1.6;">
+                <strong>Concluimos que:</strong> Tu principal reto actual se concentra en esta área (intensidad del ${p[maxKey]}%). 
+                Debes saber que <strong>${d.stats}</strong> sufren esto mismo durante su carrera; <strong>no estás solo en este proceso</strong>.
+            </p>
             
-            <p><strong>No estás solo:</strong> Sabías que aproximadamente el 70% de los estudiantes universitarios experimentan síntomas similares de ${principal.causa} en algún punto de su carrera? Lo que sientes es una respuesta natural del cuerpo ante la presión académica.</p>
-            
-            <div style="background: #f0f7ff; padding: 15px; border-radius: 10px; margin: 15px 0;">
-                <h4>🎯 Recomendaciones para ti:</h4>
-                <ul id="lista-consejos">
-                    ${obtenerConsejos(principal.nombre)}
-                </ul>
+            <p style="background: #fdf2f2; padding: 15px; border-radius: 10px; border-left: 4px solid #e74c3c;">
+                ${d.mensaje}
+            </p>
+
+            <h4 style="margin-top: 20px;">🚀 Plan de Acción Recomendado:</h4>
+            <ul>
+                ${d.consejos.map(c => `<li style="margin-bottom: 8px;">${c}</li>`).join('')}
+            </ul>
+
+            <div style="margin-top: 20px; font-size: 0.9em; color: #7f8c8d; border-top: 1px solid #eee; padding-top: 10px;">
+                Tip: Pequeños cambios diarios generan grandes resultados a largo plazo.
             </div>
-            
-            <p>Recuerda que este diagnóstico es una guía. Trabajar en esto hoy evitará que el agotamiento (burnout) afecte tu futuro profesional. ¡Tú tienes el control!</p>
         </div>
-        
-        <button onclick="location.reload()" class="boton-accion" style="margin-top: 20px;">Realizar evaluación de nuevo</button>
+
+        <button onclick="location.reload()" class="boton-accion" style="margin-top: 25px;">Reiniciar Evaluación</button>
     `;
 
-    // 4. Crear el gráfico con Chart.js
+    // 5. Inyectar Gráfico
     const ctx = document.getElementById('graficoResultados').getContext('2d');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Físico', 'Social', 'Metas', 'Académico'],
+            labels: ['Físico', 'Social', 'Metas', 'Desempeño'],
             datasets: [{
                 label: '% de Intensidad',
-                data: [porcFisico, porcSocial, porcMetas, porcAcademico],
-                backgroundColor: ['#4A90E2', '#50E3C2', '#F5A623', '#D0021B'],
-                borderRadius: 5
+                data: [p.fisico, p.social, p.metas, p.academico],
+                backgroundColor: ['#4e73df', '#1cc88a', '#f6c23e', '#e74c3c'],
+                borderRadius: 8
             }]
         },
-        options: { scales: { y: { beginAtZero: true, max: 100 } } }
+        options: { 
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, max: 100 } } 
+        }
     });
-}
-
-function obtenerConsejos(tipo) {
-    const consejos = {
-        'Ansiedad Física': "<li>Practica la respiración 4-7-8 antes de dormir.</li><li>Reduce la cafeína después de las 4 PM.</li><li>Realiza estiramientos ligeros cada 2 horas de estudio.</li>",
-        'Presión Social': "<li>Aprende a decir 'no' a compromisos que saturen tu agenda.</li><li>Evita revisar redes sociales donde te compares con otros.</li><li>Habla de tus retos con amigos de confianza; verás que ellos sienten lo mismo.</li>",
-        'Metas Personales': "<li>Divide tus grandes metas en pequeñas tareas diarias.</li><li>Acepta que un error es una oportunidad de aprendizaje, no un fracaso total.</li><li>Celebra tus pequeños logros, no solo la calificación final.</li>",
-        'Bloqueo Académico': "<li>Usa la técnica Pomodoro (25 min estudio / 5 min descanso).</li><li>Organiza tu espacio de trabajo para evitar distracciones.</li><li>Si te bloqueas, levántate y camina 10 minutos para resetear tu cerebro.</li>"
-    };
-    return consejos[tipo];
 }
 
 // Arrancamos el sistema al cargar la página
