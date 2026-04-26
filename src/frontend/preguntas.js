@@ -1,6 +1,6 @@
 const bancoPreguntas = {
     // BLOQUE 1: ANSIEDAD FÍSICA
-    1: { texto: "¿Te cuesta conciliar el sueño debido a preocupaciones académicas?", bloque: 1, filtro: true, opciones: [
+    1: { texto: "¿Te cuesta conciliar el sueño debido a preocupaciones académicas?", bloque: 1, filtro: true, opciones: [ 
         { desc: "Nunca", pts: 0, sig: 2 }, { desc: "Rara vez", pts: 1, sig: 2 }, { desc: "A veces", pts: 2, sig: 2 }, { desc: "Frecuentemente", pts: 3, sig: 2 }, { desc: "Siempre", pts: 4, sig: 2 }
     ]},
     2: { texto: "¿Te despiertas durante la noche pensando en tareas o exámenes?", bloque: 1, filtro: true, opciones: [
