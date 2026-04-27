@@ -141,35 +141,52 @@ function finalizarTest() {
     generarGrafico();
 }
 
-
 function generarGrafico() {
     const ctx = document.getElementById('graficoResultados').getContext('2d');
+    const normalizar = (val, factor) => {
+        const calculado = val * factor;
+        return calculado < 10 ? 10 : calculado; 
+    };
 
     new Chart(ctx, {
         type: 'radar',
         data: {
             labels: ['Gestión', 'Familiar', 'Social', 'Enfoque', 'Hábitos'],
             datasets: [{
+                label: 'Nivel de Tensión',
                 data: [
-                    scores.gestion * 6.25,
-                    scores.familiar * 6.25,
-                    scores.comparacion * 6.25,
-                    scores.concentracion * 6.25,
-                    scores.regulacion * 12.5
+                    normalizar(scores.gestion, 6.25),
+                    normalizar(scores.familiar, 6.25),
+                    normalizar(scores.comparacion, 6.25),
+                    normalizar(scores.concentracion, 6.25),
+                    normalizar(scores.regulacion, 12.5) 
                 ],
-                backgroundColor: 'rgba(74,144,226,0.15)',
+                backgroundColor: 'rgba(74, 144, 226, 0.25)', 
                 borderColor: '#4A90E2',
-                pointBackgroundColor: '#4A90E2'
+                borderWidth: 3,
+                pointBackgroundColor: '#4A90E2',
+                pointRadius: 4,
+                fill: true 
             }]
         },
         options: {
-            plugins: { legend: { display: false } },
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 r: {
-                    beginAtZero: true,
-                    max: 100,
-                    ticks: { display: false }
+                    angleLines: { display: true, color: '#e2e8f0' }, 
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false, stepSize: 20 },
+                    grid: { color: '#e2e8f0' },
+                    pointLabels: {
+                        font: { size: 12, weight: '600' },
+                        color: '#4A5568'
+                    }
                 }
+            },
+            plugins: {
+                legend: { display: false }
             }
         }
     });
