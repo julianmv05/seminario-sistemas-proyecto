@@ -148,3 +148,61 @@ footer { padding: 40px; text-align: center; background: #f1f1f1; }
   .articulo-investigacion { padding: 0 10px; }
   .titulo-principal { font-size: 1.8em; }
 }
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: none;
+    background: #f5f7fa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+    background: #e3ecf7;
+    transform: translateY(-2px);
+}
+
+.option-btn.active {
+    background: #4A90E2;
+    color: white;
+}
+
+.option-index {
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.btn-restart {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: #4A90E2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.grafico-box {
+    margin: 20px 0;
+}
+
+.score-box {
+    margin-top: 15px;
+    padding: 15px;
+    background: #eef4fb;
+    border-radius: 10px;
+    text-align: center;
+}
