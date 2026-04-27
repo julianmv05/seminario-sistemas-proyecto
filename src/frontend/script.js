@@ -1,9 +1,18 @@
 let preguntaActualId = 1;
 let ramaSeleccionada = "";
-let puntajeTotal = 0;
+
+let scores = {
+    gestion: 0,
+    familiar: 0,
+    comparacion: 0,
+    concentracion: 0,
+    regulacion: 0,
+    dependencia: 0,
+    frustracion: 0
+};
 
 function iniciarTest() {
-    console.log("Mind Balance: Inicializando motor de grafos...");
+    console.log("Mind Balance: Inicializando motor de grafos con multiescore...");
     if (typeof bancoPreguntas !== 'undefined') {
         renderizarPregunta(1);
     } else {
@@ -44,18 +53,23 @@ function renderizarPregunta(id) {
     }
 }
 
-
 function procesarRespuesta(idActual, opcion) {
-    puntajeTotal += opcion.pts;
-
-
     if (idActual === 1) {
-        if (opcion.sig === 10) ramaSeleccionada = "gestion";
-        if (opcion.sig === 20) ramaSeleccionada = "familiar";
-        if (opcion.sig === 30) ramaSeleccionada = "comparacion";
-        if (opcion.sig === 40) ramaSeleccionada = "concentracion";
+        if (opcion.sig === 100) ramaSeleccionada = "gestion";
+        if (opcion.sig === 200) ramaSeleccionada = "familiar";
+        if (opcion.sig === 300) ramaSeleccionada = "comparacion";
+        if (opcion.sig === 400) ramaSeleccionada = "concentracion";
+        if (opcion.sig === 50) ramaSeleccionada = "regulacion";
+        
+        if (opcion.sig === 60) {
+            ramaSeleccionada = (opcion.desc.toLowerCase().includes("dependo")) ? "dependencia" : "frustracion";
+        }
     }
 
+
+    if (ramaSeleccionada && scores[ramaSeleccionada] !== undefined) {
+        scores[ramaSeleccionada] += opcion.pts;
+    }
 
     if (opcion.sig === 'checkFiltro') {
         finalizarTest();
@@ -65,11 +79,14 @@ function procesarRespuesta(idActual, opcion) {
     }
 }
 
-
 function actualizarProgreso(id) {
     const bar = document.getElementById('progress-bar');
     if (bar) {
-        let porcentaje = id === 1 ? 10 : (id > 1 && id < 100 ? 60 : 100);
+        let porcentaje = 0;
+        if (id === 1) porcentaje = 10;
+        else if (id >= 50 && id < 100) porcentaje = 50;
+        else if (id >= 100) porcentaje = 75;
+        
         bar.style.width = porcentaje + "%";
     }
 }
@@ -85,8 +102,8 @@ function finalizarTest() {
         resDiv.classList.remove('resultado-oculto');
     }
 
-    
     const diag = diagnosticosFinales[ramaSeleccionada];
+    const puntosFinales = scores[ramaSeleccionada];
 
     let html = `
         <h2 class="titulo-seccion">Reporte de Estado: ${diag.titulo}</h2>
@@ -105,7 +122,7 @@ function finalizarTest() {
         </div>
 
         <div style="background: #4A90E2; color: white; padding: 20px; border-radius: 15px; text-align: center;">
-            <p>Puntaje de Severidad en esta área: <strong>${puntajeTotal} puntos</strong></p>
+            <p>Intensidad detectada en <strong>${ramaSeleccionada.toUpperCase()}</strong>: ${puntosFinales} puntos</p>
         </div>
         <button onclick="location.reload()" class="boton-accion" style="margin-top: 20px; width: 100%;">Realizar otro diagnóstico</button>
     `;
@@ -113,29 +130,40 @@ function finalizarTest() {
     resDiv.innerHTML = html;
 
     const ctx = document.getElementById('graficoResultados').getContext('2d');
+    
+    const radarData = [
+        scores.gestion * 6.25,      
+        scores.familiar * 6.25, 
+        scores.comparacion * 6.25, 
+        scores.concentracion * 6.25,
+        scores.regulacion * 12.5    
+    ];
+
     new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Gestión', 'Familiar', 'Social', 'Enfoque'],
+            labels: ['Gestión', 'Familiar', 'Social', 'Enfoque', 'Hábitos'],
             datasets: [{
-                label: 'Intensidad Detectada',
-                data: [
-                    ramaSeleccionada === 'gestion' ? puntajeTotal * 10 : 10,
-                    ramaSeleccionada === 'familiar' ? puntajeTotal * 10 : 10,
-                    ramaSeleccionada === 'comparacion' ? puntajeTotal * 10 : 10,
-                    ramaSeleccionada === 'concentracion' ? puntajeTotal * 10 : 10
-                ],
+                label: 'Perfil de Ansiedad',
+                data: radarData,
                 backgroundColor: 'rgba(74, 144, 226, 0.2)',
                 borderColor: '#4A90E2',
-                borderWidth: 2
+                borderWidth: 2,
+                pointBackgroundColor: '#4A90E2'
             }]
         },
         options: {
-            scales: { r: { beginAtZero: true, max: 100, ticks: { display: false } } },
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { display: false },
+                    grid: { color: '#e0e0e0' }
+                }
+            },
             plugins: { legend: { display: false } }
         }
     });
 }
-
 
 window.onload = iniciarTest;
