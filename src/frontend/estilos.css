@@ -251,3 +251,15 @@ footer { padding: 40px; text-align: center; background: #f1f1f1; }
 .btn-restart:hover {
     background: var(--primary-dark);
 }
+.grafico-box {
+    position: relative;
+    margin: 30px auto;
+    height: 300px; 
+    width: 100%;
+    max-width: 400px;
+}
+
+canvas#graficoResultados {
+    width: 100% !important;
+    height: 100% !important;
+}
