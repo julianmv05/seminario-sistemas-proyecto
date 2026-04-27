@@ -4,7 +4,7 @@ let ramaSeleccionada = "";
 let scores = {
     gestion: 0,
     familiar: 0,
-    comparacion: 0,
+    comparacion: 0, 
     concentracion: 0,
     regulacion: 0,
     dependencia: 0,
