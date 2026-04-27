@@ -1,4 +1,3 @@
-/* 1. CONFIGURACIÓN GLOBAL */
 :root {
   --color-principal: #131B4A;
   --color-acento: #547C8B;
@@ -14,7 +13,6 @@ body {
   line-height: 1.6;
 }
 
-/* 2. NAVEGACIÓN Y BANNERS */
 .barra-navegacion {
   background-color: var(--blanco-puro);
   border-bottom: 1px solid #eee;
@@ -37,7 +35,6 @@ body {
   text-align: center;
 }
 
-/* 3. EL ARTÍCULO DE INVESTIGACIÓN (Lo nuevo) */
 .seccion-blanca {
   padding: 60px 10%;
   max-width: 1000px;
@@ -97,7 +94,6 @@ body {
   background: linear-gradient(rgba(19, 27, 74, 0.6), rgba(84, 124, 139, 0.6));
 }
 
-/* 5. REFERENCIAS Y BOTONES */
 .referencias-bibliograficas {
     margin-top: 60px;
     padding: 30px;
@@ -143,66 +139,115 @@ body {
 
 footer { padding: 40px; text-align: center; background: #f1f1f1; }
 
-/* 6. RESPONSIVO */
 @media (max-width: 768px) {
   .articulo-investigacion { padding: 0 10px; }
   .titulo-principal { font-size: 1.8em; }
 }
 
-.option-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    border: none;
-    background: #f5f7fa;
-    cursor: pointer;
-    transition: all 0.2s ease;
+:root {
+    --primary: #4A90E2;
+    --primary-dark: #357ABD;
+    --bg-soft: #f8fafc;
+    --text-main: #2d3748;
+    --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-.option-btn:hover {
-    background: #e3ecf7;
-    transform: translateY(-2px);
-}
-
-.option-btn.active {
-    background: #4A90E2;
-    color: white;
-}
-
-.option-index {
-    font-weight: bold;
-    opacity: 0.6;
+#quiz-wrapper {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
 }
 
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0,0.03);
+    max-width: 500px;
+    margin: 20px auto;
 }
 
-.btn-restart {
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    background: #4A90E2;
-    color: white;
-    border: none;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    border: 2px solid #edf2f7;
+    background: #ffffff;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.option-btn:hover {
+    border-color: var(--primary);
+    background: #f0f7ff;
+    transform: translateX(5px); 
+}
+
+.option-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.option-index {
+    background: #edf2f7;
+    color: #718096;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.option-btn.active .option-index {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .grafico-box {
-    margin: 20px 0;
+    margin: 30px 0;
+    padding: 10px;
+    background: #fcfcfc;
+    border-radius: 20px;
 }
 
 .score-box {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 15px;
-    background: #eef4fb;
-    border-radius: 10px;
-    text-align: center;
+    background: #f0f7ff;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary);
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.btn-restart {
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-restart:hover {
+    background: var(--primary-dark);
 }
