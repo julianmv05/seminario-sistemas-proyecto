@@ -2,7 +2,7 @@ let preguntaActualId = 1;
 let ramaSeleccionada = "";
 
 let scores = {
-    gestion: 0,
+    gestion: 0, 
     familiar: 0,
     comparacion: 0,
     concentracion: 0,
