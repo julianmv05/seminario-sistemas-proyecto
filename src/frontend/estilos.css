@@ -263,3 +263,40 @@ canvas#graficoResultados {
     width: 100% !important;
     height: 100% !important;
 }
+
+.insight-box {
+    background: #ebf8ff; 
+    padding: 18px;
+    border-radius: 14px;
+    margin: 15px 0;
+    border-left: 4px solid #4299e1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.explicacion-box {
+    background: #f7fafc; 
+    padding: 18px;
+    border-radius: 14px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #4a5568;
+}
+
+.tips-box {
+    background: #f0fff4; 
+    padding: 18px;
+    border-radius: 14px;
+    margin: 15px 0;
+    border-left: 4px solid #48bb78;
+}
+
+.tips-box ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.tips-box li {
+    margin-bottom: 8px;
+    color: #2f855a;
+}
