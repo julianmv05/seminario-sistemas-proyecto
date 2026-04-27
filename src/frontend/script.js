@@ -107,22 +107,22 @@ function generarFeedbackPersonalizado() {
         r.texto.toLowerCase().match(/frustro|errores|bloqueo|mal/));
 
     if (usaDistraccion) {
-        feedback.insight += "Detectamos que cuando la carga académica aumenta, tu mente busca 'válvulas de escape' en distractores externos para aliviar la tensión inmediata. ";
+        feedback.insight += "Detectamos algo importante en tus respuestas: cuando las cosas se ponen pesadas, tu mente busca un pequeño refugio en las distracciones. No te culpes por eso; no es falta de voluntad, es simplemente tu cerebro intentando bajarle el volumen al estrés para que no te abrume tanto. ";
     }
     if (evita) {
-        feedback.insight += "Existe una tendencia a postergar tareas pesadas, lo cual es una respuesta natural de protección ante el estrés, pero que acumula presión a largo plazo. ";
+        feedback.insight += "Noto que a veces prefieres dejar las cosas para después. Y te entiendo, no es flojera; es que esa tarea se siente como una montaña tan alta que dar el primer paso da un poco de vértigo. Tu mente está tratando de protegerte de esa sensación de incomodidad. ";
     }
     if (frustracion) {
-        feedback.insight += "Los errores o la falta de comprensión técnica suelen detener tu flujo de trabajo, generando un ciclo de frustración que afecta tu motivación.";
+        feedback.insight += "Se nota que te exiges mucho y que, cuando algo no sale a la primera, el golpe se siente fuerte. Esa frustración nace de tus ganas de hacer las cosas bien, pero a veces termina convirtiéndose en una piedra en el camino que te quita las ganas de seguir intentándolo.";
     }
 
-    feedback.explicacion = "Esta conducta no es falta de capacidad, sino una gestión emocional del aprendizaje. Tu cerebro prioriza eliminar el malestar actual sobre el beneficio futuro de terminar la tarea. Al entender esto, podemos cambiar 'esfuerzo' por 'estrategia'.";
+    feedback.explicacion = "Lo primero que quiero decirte es que está bien no estar al cien por ciento todo el tiempo. Lo que estás sintiendo tiene una explicación lógica: tu cerebro está diseñado para buscar seguridad, y cuando percibe que algo es difícil o incierto, intenta alejarte de ahí. no necesitas 'echarle más ganas' ni ser más duro contigo mismo. Al contrario, necesitas ser un poco más amable con tu proceso. El problema no es tu capacidad —que la tienes y de sobra—, sino que estás intentando cargar todo el peso de un solo golpe. Vamos a bajar esa carga juntos.'.";
 
-    if (usaDistraccion) feedback.tips.push("Prueba el modo 'No molestar' y bloques Pomodoro de solo 20 min.");
-    if (evita) feedback.tips.push("Usa la técnica de 'los 5 minutos': comprométete a trabajar solo 5 min y luego decide si sigues.");
-    if (frustracion) feedback.tips.push("Divide los problemas técnicos en sub-pasos ridículamente pequeños para evitar el bloqueo.");
+    if (usaDistraccion) feedback.tips.push("En lugar de pelear contra el celular, haz un trato contigo: 'Voy a avanzar solo 20 minutos y luego me regalo 5 minutos de descanso total'. Verás que es más fácil cuando sabes que el descanso sí va a llegar.");
+    if (evita) feedback.tips.push("Aplica la regla de la 'puerta abierta': solo siéntate frente a la tarea 5 minutos. Si después de eso quieres parar, hazlo. Casi siempre, lo más difícil es simplemente empezar.");
+    if (frustracion) feedback.tips.push("Cuando te atores con algo técnico, respira y divídelo. No intentes resolver el código completo; hoy solo resuelve una línea. Los pequeños pasos también te llevan a la meta y cansan mucho menos.");
     
-    if (feedback.tips.length === 0) feedback.tips.push("Mantén un horario regular y prioriza el descanso nocturno.");
+    if (feedback.tips.length === 0) feedback.tips.push("No olvides que eres mucho más que tus pendientes o tus calificaciones. Tómate un momento hoy para hacer algo que te guste, solo porque sí. Te lo mereces.");
 
     return feedback;
 }
